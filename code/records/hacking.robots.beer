@@ -1,0 +1,17 @@
+$ORIGIN hacking.robots.beer.
+$TTL 600
+@                                   IN  SOA         dns.hacking.robots.beer. hostmaster.hacking.robots.beer. (
+                                        201910; Serial
+                                        600         ; Refresh after 10 minutes
+                                        600         ; Retry after 10 minutes
+                                        604800      ; Expire after 1 week
+                                        86400 )     ; Minimum TTL of 1 day
+@                                   IN  NS          dns.hacking.robots.beer.
+@                                   IN  NS          dns.hacking.robots.beer.
+
+;
+; NOTE: SWITCHING ACTIVE DC (NEED TO CHANGE THESE)
+;
+a_robot                              IN  A      	127.0.0.1
+c_robot                                IN  CNAME   a_robot
+

@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  DNS:
+    Properties:
+      HostedZoneConfig:
+        Comment: DNS Settings for hacking.robots.beer
+      Name: hacking.robots.beer
+    Type: AWS::Route53::HostedZone
+
+  '@':
+    DependsOn: DNS
+    Properties:
+      HostedZoneName: hacking.robots.beer.
+      Name: '@'
+      ResourceRecords:
+      - dns
+      TTL: 900
+      Type: NS
+    Type: AWS::Route53::RecordSet
+
+  a_robot:
+    DependsOn: DNS
+    Properties:
+      HostedZoneName: hacking.robots.beer.
+      Name: a_robot
+      ResourceRecords:
+      - 127.0.0.1
+      TTL: 900
+      Type: A
+    Type: AWS::Route53::RecordSet
+
+  c_robot:
+    DependsOn: DNS
+    Properties:
+      HostedZoneName: hacking.robots.beer.
+      Name: c_robot
+      ResourceRecords:
+      - a_robot
+      TTL: 900
+      Type: CNAME
+    Type: AWS::Route53::RecordSet

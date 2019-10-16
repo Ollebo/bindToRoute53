@@ -1,0 +1,8 @@
+version: '2'
+services:
+  bindtorouet53:
+    build: .
+    volumes:
+      - ./:/code
+    ports:
+      - 8080:8080
