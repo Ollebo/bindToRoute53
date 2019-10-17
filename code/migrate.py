@@ -36,9 +36,11 @@ def createRoue53Template(name,target,type,domain):
     '''
     Create route 53 cloud formations to be applied
     '''
+    awsName = name.replace('-','')
+
     record ={
             "ResourcesSPACE": {
-            name: {
+            awsName: {
             "DependsOn": "DNS",
             "Type": "AWS::Route53::RecordSet",
             "Properties": {
